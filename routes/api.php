@@ -5,11 +5,6 @@ use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\SongController;
 use App\Http\Controllers\Api\V1\UserController;
 
-// Route::middleware('auth:sanctum')->group(function(){
-//     Route::get('inside-mware', function(){
-//         return response()->json('success', 200);
-//     });
-// });
 Route::group(['prefix'=>'v1'],function(){
   Route::post('/auth/register',[AuthController::class,'register']);
   Route::post('/auth/login',[AuthController::class,'login']);

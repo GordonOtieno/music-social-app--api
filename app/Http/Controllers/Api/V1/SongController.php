@@ -27,6 +27,8 @@ class SongController extends Controller
                 'song'=> $song,
             ]);
 
+            return response()->json('Song Uploaded', 200);
+
         } catch(\Exception $e){
             return response()->json([
                 'message'=>'Something went wrong in the SongController.store',
@@ -47,7 +49,7 @@ class SongController extends Controller
 
            $song->delete();
 
-           return response()->json('Song Deleted Successfully', 400);
+           return response()->json('Song Deleted Successfully', 200);
 
         } catch(\Exception $e){
             return response()->json([

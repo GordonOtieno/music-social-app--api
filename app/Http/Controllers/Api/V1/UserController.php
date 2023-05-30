@@ -27,6 +27,8 @@ class UserController extends Controller
     }
 
     /**
+     * @param App\Http\Requests\User\UpdateRequest $request
+     * @param int $id
      * Update the specified resource in storage.
      */
     public function update(UpdateRequest $request, string $id)

@@ -10,6 +10,7 @@ class YoutubeController extends Controller
 {
 
     /**
+     * @param App\Http\Requests\Youtube\StoreYouTubeRequest $request
      * Store a newly created resource in storage.
      */
     public function store(StoreYouTubeRequest $request)
@@ -42,7 +43,7 @@ class YoutubeController extends Controller
         try{
             $videosByUser = Youtube::where('user_id',$user_id)->get();
 
-            return response()->json(['videoby_user' => $videosByUser],200);
+            return response()->json(['videos_by_user' => $videosByUser],200);
 
 
         }catch(\Exception $e){

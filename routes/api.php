@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\PostController;
+use App\Http\Controllers\Api\V1\PostsByUserController;
 use App\Http\Controllers\Api\V1\SongController;
 use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\YoutubeController;
@@ -30,5 +31,7 @@ Route::group(['prefix'=>'v1'],function(){
   Route::put('/posts/{id}',[PostController::class,'update'])->middleware('auth:sanctum');
   Route::delete('/posts/{id}',[PostController::class,'destroy'])->middleware('auth:sanctum');
   
+  Route::get('/user/{user_id}/posts',[PostsByUserController::class,'show'])->middleware('auth:sanctum');
+
   Route::post('/auth/logout',[AuthController::class,'logout'])->middleware('auth:sanctum');
 });

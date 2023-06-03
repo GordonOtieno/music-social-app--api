@@ -26,7 +26,7 @@ Route::group(['prefix'=>'v1'],function(){
   Route::get('/user/{user_id}/songs',[SongsByUserController::class,'index'])->middleware('auth:sanctum');
   
   Route::get('/posts',[PostController::class,'index'])->middleware('auth:sanctum');
-  Route::get('/posts/{id}',[PostController::class,'show'])->middleware('auth:sanctum');
+  Route::get('/posts/{id}',[PostController::class,'show']);
   Route::post('/posts',[PostController::class,'store'])->middleware('auth:sanctum');
   Route::put('/posts/{id}',[PostController::class,'update'])->middleware('auth:sanctum');
   Route::delete('/posts/{id}',[PostController::class,'destroy'])->middleware('auth:sanctum');

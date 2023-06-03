@@ -17,7 +17,7 @@ class PostController extends Controller
     public function index()
     {
         try{
-            $postsPerPage = 10;
+            $postsPerPage = 1;
             $post = Post::with('user')
                    ->orderBy('updated_at','desc')
                    ->simplePaginate($postsPerPage);
@@ -78,7 +78,7 @@ class PostController extends Controller
         try{
             $post = Post::with('user')->findOrFail($id);
 
-            return response()->json('New Post Created Successfuly', 200);
+            return response()->json( $post, 200);
 
         } catch(\Exception $e){
             return response()->json([
@@ -99,7 +99,7 @@ class PostController extends Controller
     {
         try{
             
-            $post = new Post;
+            $post = Post::findOrFail($id);
             if($request->hasFile('image')){
                 (new ImageService)->updateImage( $post, $request, '/images/posts/', 'update');
             }
@@ -111,7 +111,7 @@ class PostController extends Controller
 
             $post->save();
 
-            return response()->json('New Post Created Successfuly', 200);
+            return response()->json('Post with id ' . $id . ' was updated!', 200);
 
         } catch(\Exception $e){
             return response()->json([
